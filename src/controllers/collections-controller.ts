@@ -12,7 +12,6 @@ import {
     ApiOperationPost
 } from 'swagger-express-ts';
 import {CollectionFilterRequest} from "../models/collection-filter-request";
-import {CollectionResponse} from "../models/collection-response";
 import {BaseResponse} from "../models/base-response";
 import {CollectionModel} from "../models/collection-model";
 
