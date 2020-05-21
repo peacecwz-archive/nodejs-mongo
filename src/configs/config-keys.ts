@@ -3,7 +3,7 @@ export interface IConfigSet {
 }
 
 const DEV: IConfigSet = {
-    MONGODB_CONNECTION_STRING: "mongodb://dbUser:dbPassword1@ds249623.mlab.com:49623/getir-case-study"
+    MONGODB_CONNECTION_STRING: ""
 };
 
 export {
