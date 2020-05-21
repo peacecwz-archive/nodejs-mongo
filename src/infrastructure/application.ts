@@ -14,11 +14,19 @@ export class Application {
         this.server = server;
     }
 
-    async start() {
+    start() {
         this.server.app.get("/liveness", this.livenessHandler.bind(this));
         this.server.app.get("/readiness", this.readinessHandler.bind(this));
         this.OnBeforeStart();
         this.server.start();
+    }
+
+    getServer() {
+        return this.server.server;
+    }
+
+    getApp() {
+        return this.server.app;
     }
 
     protected livenessHandler(req: express.Request, res: express.Response) {
@@ -37,7 +45,7 @@ export class Application {
         }
     }
 
-    protected async OnBeforeStart(): Promise<void> {
+    protected OnBeforeStart(): void {
         // Override for start event
         return;
     }

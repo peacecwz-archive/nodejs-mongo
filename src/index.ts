@@ -6,3 +6,10 @@ import {MongoApplicationDemo} from './infrastructure/mongo-application-demo';
 const application = container.get<Application>(MongoApplicationDemo);
 application.start();
 
+const app = application.getApp();
+const server = application.getServer();
+
+export {
+    app,
+    server
+}
