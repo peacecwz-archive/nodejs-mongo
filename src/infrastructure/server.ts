@@ -19,13 +19,15 @@ export class Server {
 
     start() {
         // TODO (peacecwz): Refactor hard coded values
-        const port = 80;
+        // @ts-ignore
+        const port = process.env.PORT || 80;
 
         this.server.listen(port, '0.0.0.0', this.onListen.bind(this));
         this.server.setTimeout(10000);
     }
 
     private onListen() {
+        // @ts-ignore
         console.log(`Server started listening on 80`);
     }
 
