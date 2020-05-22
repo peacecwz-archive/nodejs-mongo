@@ -87,7 +87,7 @@ class Configuration {
         return {...DEV};
     }
 
-    private getEnv() {
+    private getEnv(): any {
         return process.env;
     }
 }

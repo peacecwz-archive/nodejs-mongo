@@ -17,9 +17,41 @@ export class CollectionServices {
         this.recordRepository = recordRepository;
     }
 
+    private validate(filterModel: CollectionFilterRequest): BaseResponse<Array<CollectionModel>> {
+        let response = new BaseResponse<Array<CollectionModel>>();
+
+        if (!filterModel.minCount && filterModel.minCount != 0) {
+            return response.buildError(ErrorMessage.INVALID_COUNT);
+        }
+
+        if (!filterModel.maxCount && filterModel.maxCount != 0) {
+            return response.buildError(ErrorMessage.INVALID_COUNT);
+        }
+
+        if (filterModel.minCount > filterModel.maxCount) {
+            return response.buildError(ErrorMessage.INVALID_COUNT_RANGE);
+        }
+
+        if (!filterModel.startDate) {
+            return response.buildError(ErrorMessage.INVALID_DATE);
+        }
+
+        if (!filterModel.endDate) {
+            return response.buildError(ErrorMessage.INVALID_DATE);
+        }
+
+        if (filterModel.startDate > filterModel.endDate) {
+            return response.buildError(ErrorMessage.INVALID_DATE_RANGE);
+        }
+
+        return response;
+    }
 
     async filterCollections(filterModel: CollectionFilterRequest): Promise<BaseResponse<Array<CollectionModel>>> {
-        let response = new BaseResponse<Array<CollectionModel>>();
+        const response = this.validate(filterModel);
+        if (response?.code) {
+            return response;
+        }
 
         let startDate = new Date(filterModel.startDate);
         let endDate = new Date(filterModel.endDate);
