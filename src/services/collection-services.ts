@@ -17,6 +17,7 @@ export class CollectionServices {
         this.recordRepository = recordRepository;
     }
 
+    // TODO (baris.ceviz): Refactor validators
     private validate(filterModel: CollectionFilterRequest): BaseResponse<Array<CollectionModel>> {
         let response = new BaseResponse<Array<CollectionModel>>();
 

@@ -1,15 +1,12 @@
 import 'reflect-metadata';
 import {container} from './infrastructure/ioc';
-import {Application} from './infrastructure/application';
 import {MongoApplicationDemo} from './infrastructure/mongo-application-demo';
 
-const application = container.get<Application>(MongoApplicationDemo);
+const application = container.get<MongoApplicationDemo>(MongoApplicationDemo);
 application.start();
 
-const app = application.getApp();
-const server = application.getServer();
+const server = application;
 
 export {
-    app,
     server
 }

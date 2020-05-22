@@ -9,6 +9,7 @@ import {CollectionServices} from "../services/collection-services";
 import {MongoDbConnector} from "../connectors/mongo-db-connector";
 import {Logger} from "./logger";
 import {RecordRepository} from "../data/repositories/record-repository";
+import {IndexController} from "../controllers/index-controller";
 
 const container = new Container();
 
@@ -28,6 +29,7 @@ container.bind<RecordRepository>(RecordRepository).toSelf().inSingletonScope();
 container.bind<CollectionServices>(CollectionServices).toSelf().inSingletonScope();
 
 // Controllers
+container.bind<interfaces.Controller>(IndexController).toSelf().inSingletonScope().whenTargetNamed(CollectionsController.name);
 container.bind<interfaces.Controller>(CollectionsController).toSelf().inSingletonScope().whenTargetNamed(CollectionsController.name);
 container.bind<RoutingContextManager>(RoutingContextManager).toSelf().inSingletonScope();
 

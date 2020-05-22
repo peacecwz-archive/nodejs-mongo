@@ -4,7 +4,7 @@ export interface IConfigSet {
 }
 
 const DEV: IConfigSet = {
-    DEBUG_LOGGING_ENABLED: true,
+    DEBUG_LOGGING_ENABLED: false,
     MONGODB_CONNECTION_STRING: "mongodb://dbUser:dbPassword1@ds249623.mlab.com:49623/getir-case-study"
 };
 

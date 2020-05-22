@@ -50,4 +50,9 @@ export class Server {
         ));
         this.app.use(exceptionHandling);
     }
+
+    close() {
+        this.server.close();
+        delete this.server;
+    }
 }

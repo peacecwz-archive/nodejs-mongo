@@ -17,6 +17,12 @@ export class MongoApplicationDemo extends Application {
         this.readiness = true;
     }
 
+    async close() {
+        await this.mongoDbConnector.disconnect();
+
+        this.server.close();
+    }
+
     async OnBeforeStart() {
         await this.mongoDbConnector.initConnection();
     }

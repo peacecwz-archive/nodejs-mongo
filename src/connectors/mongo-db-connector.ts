@@ -1,6 +1,6 @@
 import {inject, injectable} from "inversify";
 import {Configuration} from "../configs/configuration-manager";
-import Mongoose, {connect} from "mongoose";
+import Mongoose, {connect, disconnect as mongoDisconnect} from "mongoose";
 import {Logger} from "../infrastructure/logger";
 
 @injectable()
@@ -8,6 +8,7 @@ export class MongoDbConnector {
     private configuration: Configuration;
     private connection?: Mongoose.Connection;
     private logger: Logger;
+    private isDisconnected: boolean = false;
 
     constructor(
         @inject(Configuration) configuration: Configuration,
@@ -17,8 +18,13 @@ export class MongoDbConnector {
         this.logger = logger;
     }
 
+    async disconnect() {
+        await mongoDisconnect();
+        this.isDisconnected = true;
+    }
+
     async initConnection() {
-        if (this.connection) {
+        if (this.connection || this.isDisconnected || this.isDisconnected == undefined) {
             return;
         }
 

@@ -47,7 +47,7 @@ export class CollectionsController implements interfaces.Controller {
             },
             400: {description: "Invalid filter parameters"}
         },
-        path: '/'
+        path: '/filter'
     })
     @httpPost('/filter')
     async getCollections(

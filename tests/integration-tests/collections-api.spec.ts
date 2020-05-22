@@ -1,23 +1,28 @@
 import 'reflect-metadata';
-import {app,server} from '../../src';
+import {server} from '../../src';
 import request from "supertest";
 import {expect} from 'chai';
 import {ErrorMessage} from "../../src/models/error-message";
 
 describe("POST /v1/collections", () => {
+    const app = server.getApp();
 
-    afterAll(async () => {
-        server.close();
+    beforeAll(() => {
+        // TODO (baris.ceviz): If you would like to use mongoDb with test environment, please mock mongoDbConnector with test mongoDb
+    });
+
+    afterAll( async () => {
+        await server.close();
     });
 
     it("should return success response", async () => {
         // arrange
         const url = '/v1/collections/filter';
         const body = {
-            startDate: '2016-01-26',
-            endDate: '2018-02-02',
-            minCount: 2700,
-            maxCount: 3000
+            startDate: '2016-02-24',
+            endDate: '2018-02-26',
+            minCount: 100,
+            maxCount: 200
         };
 
         // act
@@ -109,11 +114,12 @@ describe("POST /v1/collections", () => {
         };
 
         // act
-        const result = await request(app).post(url).send(body);
+        const result = await request(app)
+            .post(url)
+            .send(body);
 
         //assert
         expect(result.body.code).to.be.eq(ErrorMessage.INVALID_DATE_RANGE);
         expect(result.body.msg).to.be.eq(ErrorMessage[ErrorMessage.INVALID_DATE_RANGE]);
     });
-
 });

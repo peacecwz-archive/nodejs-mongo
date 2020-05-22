@@ -1,6 +1,6 @@
 import {injectable, unmanaged} from 'inversify';
 import {Server} from "./server";
-import express from 'express';
+import express, {raw} from 'express';
 
 @injectable()
 export class Application {
@@ -19,10 +19,6 @@ export class Application {
         this.server.app.get("/readiness", this.readinessHandler.bind(this));
         this.OnBeforeStart();
         this.server.start();
-    }
-
-    getServer() {
-        return this.server.server;
     }
 
     getApp() {
