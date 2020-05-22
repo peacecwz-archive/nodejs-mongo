@@ -18,9 +18,7 @@ export class Server {
     }
 
     start() {
-        // TODO (peacecwz): Refactor hard coded values
-        // @ts-ignore
-        const port = process.env.PORT || 80;
+        const port = parseInt(process.env.PORT || '80');
 
         this.server.listen(port, '0.0.0.0', this.onListen.bind(this));
         this.server.setTimeout(10000);
