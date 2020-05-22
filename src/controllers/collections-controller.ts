@@ -13,7 +13,9 @@ import {
 } from 'swagger-express-ts';
 import {CollectionFilterRequest} from "../models/collection-filter-request";
 import {BaseResponse} from "../models/base-response";
-import {CollectionModel} from "../models/collection-model";
+import {CollectionServices} from "../services/collection-services";
+import {inject} from "inversify";
+import {validate} from "class-validator";
 
 @ApiPath({
     path: "/v1/collections",
@@ -21,7 +23,12 @@ import {CollectionModel} from "../models/collection-model";
 })
 @controller('/v1/collections')
 export class CollectionsController implements interfaces.Controller {
-    constructor() {
+    private collectionServices: CollectionServices;
+
+    constructor(
+        @inject(CollectionServices) collectionServices: CollectionServices
+    ) {
+        this.collectionServices = collectionServices;
     }
 
     @ApiOperationPost({
@@ -42,22 +49,17 @@ export class CollectionsController implements interfaces.Controller {
         },
         path: '/'
     })
-    @httpPost('/')
-    async filterCollections(
+    @httpPost('/filter')
+    async getCollections(
         @requestBody() req: CollectionFilterRequest,
         @response() response: express.Response
     ) {
-        const data = new BaseResponse<Array<CollectionModel>>({
-            code: 0,
-            msg: 'Success',
-            records: [
-                {
-                    key: 'key-id',
-                    createdAt: '2017-01-28T01:22:14.398Z',
-                    totalCount: 2500
-                }
-            ]
-        });
+        const errors = await validate(req);
+        if (errors && errors.length > 0) {
+            response.status(400).json(errors);
+        }
+
+        const data = await this.collectionServices.filterCollections(req);
         response.status(200).json(data);
     }
 }

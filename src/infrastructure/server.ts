@@ -3,6 +3,7 @@ import express from 'express';
 import * as http from "http";
 import bodyParser = require("body-parser");
 import * as swagger from "swagger-express-ts";
+import {exceptionHandling} from "../middlewares/exception-handler-middleware";
 
 @injectable()
 export class Server {
@@ -47,5 +48,6 @@ export class Server {
                 }
             }
         ));
+        this.app.use(exceptionHandling);
     }
 }

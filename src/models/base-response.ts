@@ -1,4 +1,5 @@
 import {ApiModel, ApiModelProperty, SwaggerDefinitionConstant} from "swagger-express-ts";
+import {ErrorMessage} from "./error-message";
 
 @ApiModel({
     description: "Base API Response",
@@ -10,26 +11,44 @@ export class BaseResponse<T> {
         required: true,
         type: SwaggerDefinitionConstant.STRING
     })
-    code: number;
+    code!: number;
 
     @ApiModelProperty({
         description: "Response message",
         required: true,
         type: SwaggerDefinitionConstant.STRING
     })
-    msg: string;
+    msg!: string;
 
     @ApiModelProperty({
         description: "Response generic records",
         required: true,
         type: SwaggerDefinitionConstant.ARRAY
     })
-    records: T;
+    records!: T;
 
-    constructor(props: any) {
+    constructor(props?: any) {
+        if (!props) {
+            return;
+        }
+
         this.code = props.code;
         this.msg = props.msg;
         this.records = props.records;
     }
 
+    buildSuccess(records: T): BaseResponse<T> {
+        this.code = 0;
+        this.msg = 'Success';
+        this.records = records;
+
+        return this;
+    }
+
+    buildError(errorMessage: ErrorMessage): BaseResponse<T> {
+        this.code = errorMessage;
+        this.msg = ErrorMessage[errorMessage];
+
+        return this;
+    }
 }

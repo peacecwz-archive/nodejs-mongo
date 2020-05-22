@@ -1,4 +1,6 @@
+import 'reflect-metadata';
 import {ApiModel, ApiModelProperty, SwaggerDefinitionConstant} from "swagger-express-ts";
+import {IsDate, IsNumber, IsString} from "class-validator";
 
 @ApiModel({
     description: "Collection filter request model",
@@ -10,34 +12,30 @@ export class CollectionFilterRequest {
         required: true,
         type: SwaggerDefinitionConstant.STRING
     })
-    startDate: string;
+    @IsDate()
+    startDate!: string;
 
     @ApiModelProperty({
         description: "End date",
         required: true,
         type: SwaggerDefinitionConstant.STRING
     })
-    endDate: string;
+    @IsDate()
+    endDate!: string;
 
     @ApiModelProperty({
         description: "Minimum count",
         required: true,
         type: SwaggerDefinitionConstant.NUMBER
     })
-    minCount: number;
+    @IsNumber()
+    minCount!: number;
 
     @ApiModelProperty({
         description: "Maximum count",
         required: true,
         type: SwaggerDefinitionConstant.NUMBER
     })
-    maxCount: number;
-
-    constructor(props: any) {
-        this.startDate = props.startDate;
-        this.endDate = props.endDate;
-        this.minCount = props.minCount;
-        this.maxCount = props.maxCount;
-    }
-
+    @IsNumber()
+    maxCount!: number;
 }
