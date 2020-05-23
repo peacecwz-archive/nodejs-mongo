@@ -79,3 +79,6 @@ Run integration tests
 ```bash
 yarn integration-tests
 ```
+## Deployments
+
+Deploying to Heroku platform, installed Heroku CI & CD. You can see deployments on [Github environment](https://github.com/peacecwz/nodejs-mongo/deployments)
