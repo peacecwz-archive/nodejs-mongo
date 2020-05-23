@@ -9,21 +9,21 @@ export class BaseResponse<T> {
     @ApiModelProperty({
         description: "Response status code",
         required: true,
-        type: SwaggerDefinitionConstant.STRING
+        type: SwaggerDefinitionConstant.Response.Type.NUMBER
     })
     code!: number;
 
     @ApiModelProperty({
         description: "Response message",
         required: true,
-        type: SwaggerDefinitionConstant.STRING
+        type: SwaggerDefinitionConstant.Response.Type.STRING
     })
     msg!: string;
 
     @ApiModelProperty({
         description: "Response generic records",
-        required: true,
-        type: SwaggerDefinitionConstant.ARRAY
+        required: false,
+        type: SwaggerDefinitionConstant.Response.Type.OBJECT
     })
     records!: T;
 

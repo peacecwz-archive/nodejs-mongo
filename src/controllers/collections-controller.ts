@@ -9,7 +9,9 @@ import {
 import * as express from 'express';
 import {
     ApiPath,
-    ApiOperationPost, ApiOperationGet
+    ApiOperationPost,
+    ApiOperationGet,
+    SwaggerDefinitionConstant
 } from 'swagger-express-ts';
 import {CollectionFilterRequest} from "../models/collection-filter-request";
 import {BaseResponse} from "../models/base-response";
@@ -64,7 +66,8 @@ export class CollectionsController implements interfaces.Controller {
         responses: {
             200: {
                 description: "Success",
-                model: 'BaseResponse'
+                model: 'BaseResponse',
+                type: SwaggerDefinitionConstant.Response.Type.OBJECT
             },
             400: {description: "Invalid filter parameters"}
         },
@@ -96,7 +99,8 @@ export class CollectionsController implements interfaces.Controller {
         responses: {
             200: {
                 description: "Success",
-                model: 'BaseResponse'
+                model: 'BaseResponse',
+                type: SwaggerDefinitionConstant.Response.Type.OBJECT
             },
             400: {description: "Invalid filter parameters"}
         },
