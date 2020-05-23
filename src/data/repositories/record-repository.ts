@@ -13,7 +13,7 @@ export class RecordRepository {
         this.logger = logger;
     }
 
-    async filterRecords(startDate: Date, endDate: Date, minCount: number, maxCount: number): Promise<Aggregate<RecordEntity[]>> {
+    async filterRecords(startDate: Date, endDate: Date, minCount: number, maxCount: number): Promise<RecordEntity[]> {
         const query = [
             {
                 "$project": {
@@ -28,8 +28,8 @@ export class RecordRepository {
             }, {
                 "$match": {
                     "$and": [
-                        {totalCount: {$gte: minCount, $lte: maxCount}},
-                        {createdAt: {$gte: startDate, $lte: endDate}}
+                        {totalCount: {$gte: parseInt(minCount.toString()), $lte: parseInt(maxCount.toString())}},
+                        {createdAt: {$gte: new Date(startDate), $lte: new Date(endDate)}}
                     ]
                 }
             },
