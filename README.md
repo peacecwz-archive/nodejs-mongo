@@ -34,13 +34,24 @@ Running on server
 yarn build; yarn start
 ```
 
-## Development
+## Document
 
 ### Swaggar
 
 [https://nodejs-mongo-demo.herokuapp.com/](https://nodejs-mongo-demo.herokuapp.com/)
 
 You can send request on swagger
+
+#### [GET] /v1/collections
+
+```ùrl
+?startDate=2016-09-06T13:19:42.679Z
+&endDate=2017-11-16T15:43:53.579Z
+&minCount=2700
+&maxCount=3000
+```
+
+#### [POST] /v1/collections/filter
 
 ```json
 { 
@@ -51,7 +62,15 @@ You can send request on swagger
 }
 ```
 
-### Example Request
+### Example Request 
+
+#### [GET] /v1/collections
+
+```bash
+curl --location --request GET 'http://nodejs-mongo-demo.herokuapp.com/v1/collections/?startDate=2016-09-06T13:19:42.679Z&endDate=2017-11-16T15:43:53.579Z&minCount=2700&maxCount=3000'
+```
+
+#### [POST] /v1/collections/filter
 
 ```bash
 curl --location --request POST 'http://nodejs-mongo-demo.herokuapp.com/v1/collections/filter' \
