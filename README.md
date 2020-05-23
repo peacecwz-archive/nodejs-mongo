@@ -36,6 +36,10 @@ yarn build; yarn start
 
 ## Development
 
+### Swaggar
+
+[https://nodejs-mongo-demo.herokuapp.com/](https://nodejs-mongo-demo.herokuapp.com/)
+
 You can send request on swagger
 
 ```json
@@ -46,7 +50,6 @@ You can send request on swagger
 	"maxCount": 1000
 }
 ```
-
 
 ### Example Request
 
@@ -61,4 +64,18 @@ curl --location --request POST 'http://nodejs-mongo-demo.herokuapp.com/v1/collec
 	"minCount": 0,
 	"maxCount": 1000
 }'
+```
+
+### Tests
+
+Run unit tests
+
+```bash
+yarn unit-tests
+```
+
+Run integration tests
+
+```bash
+yarn integration-tests
 ```
