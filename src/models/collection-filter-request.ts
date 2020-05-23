@@ -13,7 +13,7 @@ export class CollectionFilterRequest {
         type: SwaggerDefinitionConstant.STRING
     })
     @IsDate()
-    startDate!: string;
+    startDate!: Date;
 
     @ApiModelProperty({
         description: "End date",
@@ -21,7 +21,7 @@ export class CollectionFilterRequest {
         type: SwaggerDefinitionConstant.STRING
     })
     @IsDate()
-    endDate!: string;
+    endDate!: Date;
 
     @ApiModelProperty({
         description: "Minimum count",

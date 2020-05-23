@@ -54,10 +54,8 @@ export class CollectionServices {
             return response;
         }
 
-        let startDate = new Date(filterModel.startDate);
-        let endDate = new Date(filterModel.endDate);
         const result = await this.recordRepository
-            .filterRecords(startDate, endDate, filterModel.minCount, filterModel.maxCount);
+            .filterRecords(filterModel.startDate, filterModel.endDate, filterModel.minCount, filterModel.maxCount);
 
         if (result.length == 0) {
             return response.buildError(ErrorMessage.RECORDS_NOT_FOUND);

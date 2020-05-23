@@ -1,6 +1,7 @@
 import {Logger} from "../../infrastructure/logger";
 import {injectable,inject} from 'inversify';
-import RecordSchema from "../entities/record-entity";
+import RecordSchema, {RecordEntity} from "../entities/record-entity";
+import {Aggregate} from "mongoose";
 
 @injectable()
 export class RecordRepository {
@@ -12,7 +13,7 @@ export class RecordRepository {
         this.logger = logger;
     }
 
-    async filterRecords(startDate: Date, endDate: Date, minCount: number, maxCount: number) {
+    async filterRecords(startDate: Date, endDate: Date, minCount: number, maxCount: number): Promise<Aggregate<RecordEntity[]>> {
         const query = [
             {
                 "$project": {

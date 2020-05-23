@@ -4,7 +4,7 @@ export interface RecordEntity extends Document {
     key: string;
     value: string;
     createdAt: Date;
-    counts: Array<number>;
+    counts: number[];
 }
 
 const RecordSchema: Schema = new Schema({
