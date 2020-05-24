@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {Application} from "./application";
 import {inject} from "inversify";
 import {Server} from "./server";

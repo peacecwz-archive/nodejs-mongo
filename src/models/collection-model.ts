@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {ApiModel, ApiModelProperty, SwaggerDefinitionConstant} from "swagger-express-ts";
 
 @ApiModel({

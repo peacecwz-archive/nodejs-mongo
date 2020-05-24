@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface RecordEntity extends Document {

@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 export enum ErrorMessage {
     UNKNOWN_ERROR = -1,
     INVALID_COUNT = 1,

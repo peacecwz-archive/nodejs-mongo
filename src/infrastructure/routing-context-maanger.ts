@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {Server} from './server';
 import {InversifyExpressServer} from 'inversify-express-utils';
 import {Container, inject, injectable} from 'inversify';

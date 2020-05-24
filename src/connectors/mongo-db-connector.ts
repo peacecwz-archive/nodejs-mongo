@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {inject, injectable} from "inversify";
 import {Configuration} from "../configs/configuration-manager";
 import Mongoose, {connect, disconnect as mongoDisconnect} from "mongoose";

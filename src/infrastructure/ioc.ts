@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {Container} from 'inversify';
 import {Configuration} from "../configs/configuration-manager";
 import {Server} from "./server";

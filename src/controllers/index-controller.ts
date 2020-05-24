@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {controller, httpGet,response, interfaces} from "inversify-express-utils";
 import * as express from "express";
 

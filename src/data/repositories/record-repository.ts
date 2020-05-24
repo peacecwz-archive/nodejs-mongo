@@ -1,7 +1,7 @@
+import 'reflect-metadata';
 import {Logger} from "../../infrastructure/logger";
 import {injectable,inject} from 'inversify';
 import RecordSchema, {RecordEntity} from "../entities/record-entity";
-import {Aggregate} from "mongoose";
 
 @injectable()
 export class RecordRepository {
