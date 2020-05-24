@@ -46,19 +46,19 @@ You can send request on swagger
 
 ```ùrl
 ?startDate=2016-09-06T13:19:42.679Z
-&endDate=2017-11-16T15:43:53.579Z
-&minCount=2700
-&maxCount=3000
+&endDate=2016-11-16T15:43:53.579Z
+&minCount=0
+&maxCount=100
 ```
 
 #### [POST] /v1/collections/filter
 
 ```json
 { 
-	"startDate": "2017-02-04T05:57:48.877Z", 
-	"endDate": "2017-02-04T16:57:48.877Z",
+	"startDate": "2016-09-06T13:19:42.679Z", 
+	"endDate": "2016-11-16T15:43:53.579Z",
 	"minCount": 0,
-	"maxCount": 1000
+	"maxCount": 100
 }
 ```
 
@@ -67,7 +67,7 @@ You can send request on swagger
 #### [GET] /v1/collections
 
 ```bash
-curl --location --request GET 'http://nodejs-mongo-demo.herokuapp.com/v1/collections/?startDate=2016-09-06T13:19:42.679Z&endDate=2017-11-16T15:43:53.579Z&minCount=2700&maxCount=3000'
+curl --location --request GET 'http://nodejs-mongo-demo.herokuapp.com/v1/collections/?startDate=2016-09-06T13:19:42.679Z&endDate=2016-11-16T15:43:53.579Z&minCount=0&maxCount=100'
 ```
 
 #### [POST] /v1/collections/filter
@@ -78,10 +78,10 @@ curl --location --request POST 'http://nodejs-mongo-demo.herokuapp.com/v1/collec
 --header 'Content-Type: application/json' \
 --header 'Content-Type: text/plain' \
 --data-raw '{ 
-	"startDate": "2017-02-04T05:57:48.877Z", 
-	"endDate": "2017-02-04T16:57:48.877Z",
+	"startDate": "2016-09-06T13:19:42.679Z", 
+	"endDate": "2016-11-16T15:43:53.579Z",
 	"minCount": 0,
-	"maxCount": 1000
+	"maxCount": 100
 }'
 ```
 
