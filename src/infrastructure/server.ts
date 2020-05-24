@@ -5,6 +5,7 @@ import * as http from "http";
 import bodyParser = require("body-parser");
 import * as swagger from "swagger-express-ts";
 import {exceptionHandler} from "../middlewares/exception-handler-middleware";
+import {SwaggerDefinitionConstant} from "swagger-express-ts";
 
 @injectable()
 export class Server {
@@ -45,7 +46,11 @@ export class Server {
                     info: {
                         title: "NodeJS MongoDB API",
                         version: "1.0"
-                    }
+                    },
+                    schemes: [
+                        SwaggerDefinitionConstant.Scheme.HTTP,
+                        SwaggerDefinitionConstant.Scheme.HTTPS
+                    ]
                 }
             }
         ));
